@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0883C56F24182DE200201408 /* Musica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0883C56E24182DE200201408 /* Musica.swift */; };
 		08A03B71240D8065008602BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A03B70240D8065008602BE /* AppDelegate.swift */; };
 		08A03B73240D8065008602BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A03B72240D8065008602BE /* SceneDelegate.swift */; };
 		08A03B75240D8065008602BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A03B74240D8065008602BE /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0883C56E24182DE200201408 /* Musica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Musica.swift; sourceTree = "<group>"; };
 		08A03B6D240D8065008602BE /* musicmix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = musicmix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08A03B70240D8065008602BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08A03B72240D8065008602BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				08A03B72240D8065008602BE /* SceneDelegate.swift */,
 				08A03B74240D8065008602BE /* ViewController.swift */,
 				08A03B76240D8065008602BE /* Main.storyboard */,
+				0883C56E24182DE200201408 /* Musica.swift */,
 				08A03B79240D8068008602BE /* Assets.xcassets */,
 				08A03B7B240D8068008602BE /* LaunchScreen.storyboard */,
 				08A03B7E240D8068008602BE /* Info.plist */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08A03B75240D8065008602BE /* ViewController.swift in Sources */,
+				0883C56F24182DE200201408 /* Musica.swift in Sources */,
 				08A03B71240D8065008602BE /* AppDelegate.swift in Sources */,
 				08A03B73240D8065008602BE /* SceneDelegate.swift in Sources */,
 			);

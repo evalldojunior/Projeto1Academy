@@ -70,11 +70,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             self.present(alerta, animated: true, completion: nil)
         } else {
             if resultado == false {
-                posicaoFinalElementos()
+                UIView.animate(withDuration: 1.5) {
+                    self.posicaoFinalElementos()
+                }
                 resultado = true
             }
             else {
-                posicaoInicialElementos()
+                UIView.animate(withDuration: 1.5) {
+                    self.posicaoInicialElementos()
+                    }
                 resultado = false
             }
         }
@@ -82,7 +86,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     
     @IBAction func darkMode() {
-        modoNoturno()
+        UIView.animate(withDuration: 0.5) {
+            self.modoNoturno()
+        }
     }
     
     func criarListaMusica() {
@@ -148,7 +154,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             generoTextField.layer.borderColor = UIColor.white.cgColor
             generoTextField.textColor = UIColor.white
             generoTextField.attributedPlaceholder = NSAttributedString(string: "Gênero musical", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-            
             dark = true
         } else {
             view.backgroundColor = UIColor.white
@@ -158,7 +163,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             generoTextField.layer.borderColor = UIColor.black.cgColor
             generoTextField.textColor = UIColor.black
             generoTextField.attributedPlaceholder = NSAttributedString(string: "Gênero musical", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-            
             dark = false
         }
         
@@ -166,13 +170,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func esconderElementos() {
         //- Esconder o botão de modo noturno
-        darkModeButton.isHidden = true
+        self.darkModeButton.isHidden = true
     }
     
     func mostrarElementos() {
         //- Aparecer botões de lixeira e shuffle
-        lixoButton.isHidden = false
-        shuffleButton.isHidden = false
+        
+        self.lixoButton.isHidden = false
+        self.shuffleButton.isHidden = false
     }
     
     func moverETrocarNomeBotao() {
@@ -180,6 +185,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //- Trocar o texto do botão “Party!” para “Refazer”
         partyButton.setTitle("Refazer", for: .normal)
         partyButton.frame = CGRect(x: partyButton.frame.origin.x, y: 751, width: partyButton.frame.size.width, height: partyButton.frame.size.height)
+        
     }
     
     func moverCamposTempoGenero() {
@@ -250,15 +256,5 @@ extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-}
-
-class Musica {
-    var tempo: Int
-    var genero: String
-    
-    init(tempoMin: Int, generoMus: String) {
-        tempo = tempoMin
-        genero = generoMus
     }
 }
