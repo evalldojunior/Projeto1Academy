@@ -14,6 +14,7 @@
 		08A03B78240D8065008602BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08A03B76240D8065008602BE /* Main.storyboard */; };
 		08A03B7A240D8068008602BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08A03B79240D8068008602BE /* Assets.xcassets */; };
 		08A03B7D240D8068008602BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08A03B7B240D8068008602BE /* LaunchScreen.storyboard */; };
+		08D9DFD82419906100B4BF34 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D9DFD72419906000B4BF34 /* SpotifyiOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		08A03B79240D8068008602BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08A03B7C240D8068008602BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08A03B7E240D8068008602BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08D9DFD72419906000B4BF34 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08D9DFD82419906100B4BF34 /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +47,7 @@
 			children = (
 				08A03B6F240D8065008602BE /* musicmix */,
 				08A03B6E240D8065008602BE /* Products */,
+				08D9DFD72419906000B4BF34 /* SpotifyiOS.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -289,6 +293,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = musicmix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -306,6 +314,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = musicmix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -121,11 +121,21 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         generoTextField.text = ""
         
         //- Esconder os botões de lixeira e shuffle
-        lixoButton.isHidden = true
-        shuffleButton.isHidden = true
+        UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.lixoButton.alpha = 0
+            self.shuffleButton.alpha = 0
+        }, completion: { _ in
+            self.lixoButton.isHidden = true
+            self.shuffleButton.isHidden = true
+        })
         
         //- Reaparecer o modo noturno
+        darkModeButton.alpha = 0
         darkModeButton.isHidden = false
+        UIView.animate(withDuration: 0.1, delay: 1.0, options: .curveEaseInOut, animations: {
+            self.darkModeButton.alpha = 1
+        }, completion: { _ in
+        })
         
         //- Trocar o texto do botão refazer para “Party!”
         //- Voltar o botão party para a sua posição inicial
@@ -170,14 +180,24 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func esconderElementos() {
         //- Esconder o botão de modo noturno
-        self.darkModeButton.isHidden = true
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseInOut, animations: {
+            self.darkModeButton.alpha = 0
+        }, completion: { _ in
+            self.darkModeButton.isHidden = true
+        })
     }
     
     func mostrarElementos() {
         //- Aparecer botões de lixeira e shuffle
-        
+        lixoButton.alpha = 0
+        shuffleButton.alpha = 0
         self.lixoButton.isHidden = false
         self.shuffleButton.isHidden = false
+        UIView.animate(withDuration: 0.1, delay: 1.0, options: .curveEaseInOut, animations: {
+            self.lixoButton.alpha = 1
+            self.shuffleButton.alpha = 1
+        }, completion: { _ in
+        })
     }
     
     func moverETrocarNomeBotao() {
