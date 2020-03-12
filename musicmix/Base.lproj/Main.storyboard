@@ -59,6 +59,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="Group 9-2"/>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMl-5X-cJs">
+                                <rect key="frame" x="301" y="780" width="71" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="spotifyIcon"/>
+                                <connections>
+                                    <action selector="spotifyLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Q9-Pr-yOg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -84,5 +92,6 @@
         <image name="Group 8-2" width="276" height="276"/>
         <image name="Group 9-2" width="276" height="276"/>
         <image name="Subtract-2" width="196" height="199"/>
+        <image name="spotifyIcon" width="512" height="512"/>
     </resources>
 </document>

@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import SafariServices
+import AVFoundation
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+//    var auth = SPTAuth.defaultInstance()
+//    var session:SPTSession!
+//    var player : SPTAudioStreamingController?
+//    var loginUrl: URL?
     
     @IBOutlet var generoTextField: UITextField!
     @IBOutlet var timeTextField: UITextField!
@@ -58,7 +65,20 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         configureTextFields()
         configureTapGesture()
         
+        preencherMusicas()
+        
+//        setup()
+//        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.updateAfterFirstLogin), name: NSNotification.Name(rawValue: "ligginSuccessfull"), object: nil)
     }
+    
+    
+//    @IBAction func spotifyLogin(_ sender: Any) {
+//        if UIApplication.shared.canOpenURL(loginUrl!){ //talvez de erro
+//            if auth!.canHandle(auth?.redirectURL) {
+//                // do something
+//            }
+//        }
+//    }
     
     @IBAction func mostrarResultado() {
         view.endEditing(true)
@@ -91,15 +111,51 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
+//    func setup() {
+//        let redirectURL = "musicmix://returnAfterLogin"
+//        let clientID = "14a528f61c4a49ad93abab2808829549"
+//        auth!.redirectURL = URL(string: redirectURL)
+//        auth!.clientID = "14a528f61c4a49ad93abab2808829549"
+//        auth?.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope]
+//        loginUrl = auth?.spotifyAppAuthenticationURL()
+//    }
+//
+//    func initializePlayer(authSession:SPTSession) {
+//        if self.player == nil {
+//            self.player = SPTAudioStreamingController.sharedInstance()
+//            self.player!.playbackDelegate = self
+//            self.player!.delegate = self
+//            try! player?.start(withClientId: auth?.clientID)
+//            self.player!.login(withAccessToken: authSession.accessToken)
+//        }
+//    }
+    
+//    @objc func updateAfterFirstLogin() {
+//        let userDefaults = UserDefaults.standard
+//        if let sessionObj:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
+//            let sessionDataObj = sessionObj as! Data
+//            let firstTimeSession = try? NSKeyedUnarchiver.unarchivedObject(ofClass: SPTSession.self, from: sessionDataObj)! //talvez de erro
+//            self.session = firstTimeSession
+//            initializePlayer(authSession: session)
+//        }
+//    }
+//
+//    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
+//        print("ae porra voce logou")
+//    }
+    
     func criarListaMusica() {
         //- Ler o campo de tempo
         let time = timeTextField.text!
         let timeInt = Int(time)!
         
         //- Ler o campo de gênero musical
-        let genero = generoTextField.text!
+        //let genero = generoTextField.text!
         
         //- Aplicar o algoritmo de knapsack para descobrir a lista de musicas do gênero dado que completem o tempo dado
+        var knapsack: Knapsack = Knapsack(capacity: timeInt, activities: listaMusica)
+        var listaFinal: [Musica] = knapsack.knapsack()
+        print(listaFinal[1].nome)
     }
     
     
@@ -148,6 +204,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func posicaoFinalElementos() {
+        criarListaMusica()
         esconderElementos()
         mostrarElementos()
         moverETrocarNomeBotao()
@@ -267,8 +324,26 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         view.endEditing(true)
     }
     
-    // comentar as linhas de codigo depois desse comentario
-    var musica: Musica = Musica(tempoMin: 4, generoMus: "Pop")
+    // colocando exemplos predefinidos para mostrar pelo menos um resultado
+    // talvez colocar as proximas linhas em um outro arquivo
+    var listaMusica: [Musica] = []
+    
+    let nomeGeral = ["Physical", "Stupid Love", "Salt", "Don't Start Now", "The Man", "Say So", "Worth It", "Work", "Shake It Off", "Want To Want Me", "Lean On", "Super Bass", "Happy", "Someone Like You", "Glad You Came", "Call Me Maybe", "Stronger", "Payphone", "Roar", "I Love It", "Problem"]
+    
+    let tempoGeral = [3, 3, 3, 3, 4, 3, 4, 3, 4, 3, 3, 3, 4, 5, 3, 3, 4, 4, 4, 3, 3]
+    
+    //let capaGeral = [""]
+    
+    let artistaGeral = ["Dua Lipa", "Lady Gaga", "Ava Max", "Dua Lipa", "Taylor Swift", "Doja Cat", "Fifth Harmony", "Rihanna", "Taylor Swift", "Jason Derulo", "Major Lazer", "Nicki Minaj", "Pharrell Williams", "Adele", "The Wanted", "Carly Rae Jepsen", "Kelly Clarkson", "Marron 5", "Katy Perry", "Icona PoP", "Ariana Grande"]
+    
+    func preencherMusicas() {
+        for n in 0...nomeGeral.count-1 {
+            let musica: Musica = Musica(tempoMin: tempoGeral[n], nomeMus: nomeGeral[n], artistaMus: artistaGeral[n])
+            listaMusica.append(musica)
+        }
+    }
+    
+    
     
 }
 

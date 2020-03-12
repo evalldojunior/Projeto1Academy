@@ -10,10 +10,14 @@ import Foundation
 
 class Musica {
     var tempo: Int
-    var genero: String
+    var nome: String
+    //var capa: UIImage
+    var artista: String
     
-    init(tempoMin: Int, generoMus: String) {
+    init(tempoMin: Int, nomeMus: String, artistaMus: String) {
         tempo = tempoMin
-        genero = generoMus
+        nome = nomeMus
+        //capa = capaMus
+        artista = artistaMus
     }
 }

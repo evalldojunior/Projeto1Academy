@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		083CE973241AAAB6007421B9 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083CE972241AAAB6007421B9 /* SpotifyAudioPlayback.framework */; };
+		083CE975241AAABF007421B9 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083CE974241AAABF007421B9 /* SpotifyAuthentication.framework */; };
+		083CE977241AAACB007421B9 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083CE976241AAACB007421B9 /* SpotifyMetadata.framework */; };
+		083CE97A241AE23A007421B9 /* Knapsack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083CE979241AE23A007421B9 /* Knapsack.swift */; };
 		0883C56F24182DE200201408 /* Musica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0883C56E24182DE200201408 /* Musica.swift */; };
 		08A03B71240D8065008602BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A03B70240D8065008602BE /* AppDelegate.swift */; };
 		08A03B73240D8065008602BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A03B72240D8065008602BE /* SceneDelegate.swift */; };
@@ -14,10 +18,14 @@
 		08A03B78240D8065008602BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08A03B76240D8065008602BE /* Main.storyboard */; };
 		08A03B7A240D8068008602BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08A03B79240D8068008602BE /* Assets.xcassets */; };
 		08A03B7D240D8068008602BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08A03B7B240D8068008602BE /* LaunchScreen.storyboard */; };
-		08D9DFD82419906100B4BF34 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D9DFD72419906000B4BF34 /* SpotifyiOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		083CE972241AAAB6007421B9 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
+		083CE974241AAABF007421B9 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
+		083CE976241AAACB007421B9 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
+		083CE978241AACBB007421B9 /* musicmix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = musicmix.h; sourceTree = "<group>"; };
+		083CE979241AE23A007421B9 /* Knapsack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knapsack.swift; sourceTree = "<group>"; };
 		0883C56E24182DE200201408 /* Musica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Musica.swift; sourceTree = "<group>"; };
 		08A03B6D240D8065008602BE /* musicmix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = musicmix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08A03B70240D8065008602BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -27,7 +35,6 @@
 		08A03B79240D8068008602BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08A03B7C240D8068008602BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08A03B7E240D8068008602BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		08D9DFD72419906000B4BF34 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +42,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08D9DFD82419906100B4BF34 /* SpotifyiOS.framework in Frameworks */,
+				083CE977241AAACB007421B9 /* SpotifyMetadata.framework in Frameworks */,
+				083CE975241AAABF007421B9 /* SpotifyAuthentication.framework in Frameworks */,
+				083CE973241AAAB6007421B9 /* SpotifyAudioPlayback.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,7 +56,6 @@
 			children = (
 				08A03B6F240D8065008602BE /* musicmix */,
 				08A03B6E240D8065008602BE /* Products */,
-				08D9DFD72419906000B4BF34 /* SpotifyiOS.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,9 +75,14 @@
 				08A03B74240D8065008602BE /* ViewController.swift */,
 				08A03B76240D8065008602BE /* Main.storyboard */,
 				0883C56E24182DE200201408 /* Musica.swift */,
+				083CE978241AACBB007421B9 /* musicmix.h */,
 				08A03B79240D8068008602BE /* Assets.xcassets */,
+				083CE976241AAACB007421B9 /* SpotifyMetadata.framework */,
+				083CE974241AAABF007421B9 /* SpotifyAuthentication.framework */,
 				08A03B7B240D8068008602BE /* LaunchScreen.storyboard */,
+				083CE972241AAAB6007421B9 /* SpotifyAudioPlayback.framework */,
 				08A03B7E240D8068008602BE /* Info.plist */,
+				083CE979241AE23A007421B9 /* Knapsack.swift */,
 			);
 			path = musicmix;
 			sourceTree = "<group>";
@@ -145,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				083CE97A241AE23A007421B9 /* Knapsack.swift in Sources */,
 				08A03B75240D8065008602BE /* ViewController.swift in Sources */,
 				0883C56F24182DE200201408 /* Musica.swift in Sources */,
 				08A03B71240D8065008602BE /* AppDelegate.swift in Sources */,
@@ -296,14 +310,18 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/musicmix",
 				);
 				INFOPLIST_FILE = musicmix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.academy.musicmix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/egsj/Desktop/MusicApp/musicmix/musicmix.h;
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -317,14 +335,18 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/musicmix",
 				);
 				INFOPLIST_FILE = musicmix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = br.ufpe.cin.academy.musicmix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/egsj/Desktop/MusicApp/musicmix/musicmix.h;
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
