@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 import AVFoundation
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
 //    var auth = SPTAuth.defaultInstance()
 //    var session:SPTSession!
@@ -19,6 +19,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBOutlet var generoTextField: UITextField!
     @IBOutlet var timeTextField: UITextField!
+    @IBOutlet var collectionView: UICollectionView!
     
     @IBOutlet var partyButton: UIButton!
     @IBOutlet var darkModeButton: UIButton!
@@ -35,6 +36,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     let time = ["2", "4", "6", "8", "10", "12", "17", "16", "18", "20", "22", "24", "26", "28", "30", "32", "34", "36", "38", "40"]
     let genero = ["Alternativa", "Classica", "Brega", "Dance", "Eletronica", "Forró", "Funk", "Gospel", "Hip hop", "Indie", "MPB", "Pagode", "Pop", "Rap", "Rock", "Sertanejo"]
+    var listaFinal: [Musica] = []
     
     
     override func viewDidLoad() {
@@ -66,6 +68,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         configureTapGesture()
         
         preencherMusicas()
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
 //        setup()
 //        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.updateAfterFirstLogin), name: NSNotification.Name(rawValue: "ligginSuccessfull"), object: nil)
@@ -153,23 +157,42 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //let genero = generoTextField.text!
         
         //- Aplicar o algoritmo de knapsack para descobrir a lista de musicas do gênero dado que completem o tempo dado
-        var knapsack: Knapsack = Knapsack(capacity: timeInt, activities: listaMusica)
-        var listaFinal: [Musica] = knapsack.knapsack()
-        print(listaFinal[1].nome)
+        let knapsack: Knapsack = Knapsack(capacity: timeInt, activities: listaMusica)
+        listaFinal = knapsack.knapsack()
+        
+        for n in 0...listaFinal.count-1{
+            print(listaFinal[n].nome)
+        }
+        
+        collectionView.reloadData()
+        print("por favor pega nao aguento mais")
     }
     
     
     func mostrarListaMusica() {
         //- Aparecer a lista de musicas resultante do algoritmo de knapsack apos os campos de tempo e genero musical
+        collectionView.alpha = 0
+        self.collectionView.isHidden = false
+        UIView.animate(withDuration: 0.1, delay: 1.5, options: .curveEaseInOut, animations: {
+            self.collectionView.alpha = 1
+        }, completion: { _ in
+        })
     }
     
     func esconderLista() {
         //- Esconder a lista de musicas
+        UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.collectionView.alpha = 0
+        }, completion: { _ in
+            self.collectionView.isHidden = true
+        })
     }
     
     
     func posicaoInicialElementos() {
         //- Voltar os campos de tempo e gênero musical a sua posição inicial
+        esconderLista()
+        
         timeTextField.frame = CGRect(x: timeTextField.frame.origin.x, y: 396, width: timeTextField.frame.size.width, height: timeTextField.frame.size.height)
         generoTextField.frame = CGRect(x: generoTextField.frame.origin.x, y: 396, width: generoTextField.frame.size.width, height: generoTextField.frame.size.height)
         logoImage.frame = CGRect(x: logoImage.frame.origin.x, y: 146, width: logoImage.frame.size.width, height: logoImage.frame.size.height)
@@ -201,6 +224,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // trnar editavel
         timeTextField.isEnabled = true
         generoTextField.isEnabled = true
+        collectionView.isHidden = true
     }
     
     func posicaoFinalElementos() {
@@ -209,6 +233,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         mostrarElementos()
         moverETrocarNomeBotao()
         moverCamposTempoGenero()
+        mostrarListaMusica()
     }
     
     func modoNoturno() {
@@ -304,7 +329,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == pickerView1 {
-            timeTextField.text = time[row] + " minutos"
+            timeTextField.text = time[row]// + " minutos"
         } else {
             generoTextField.text = genero[row]
         }
@@ -324,21 +349,37 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         view.endEditing(true)
     }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return listaFinal.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! MusicCollectionViewCell
+        cell.musicaNome.text = listaFinal[indexPath.item].nome
+        cell.musicaTempo.text = String(listaFinal[indexPath.item].tempo) + " m"
+        cell.musicaArtista.text = listaFinal[indexPath.item].artista
+        cell.musicaImageView.image = listaFinal[indexPath.item].capa
+        
+        return cell
+    }
+
     // colocando exemplos predefinidos para mostrar pelo menos um resultado
     // talvez colocar as proximas linhas em um outro arquivo
     var listaMusica: [Musica] = []
     
-    let nomeGeral = ["Physical", "Stupid Love", "Salt", "Don't Start Now", "The Man", "Say So", "Worth It", "Work", "Shake It Off", "Want To Want Me", "Lean On", "Super Bass", "Happy", "Someone Like You", "Glad You Came", "Call Me Maybe", "Stronger", "Payphone", "Roar", "I Love It", "Problem"]
+    let nomeGeral = ["Clima Quente", "Physical", "Stupid Love", "Salt", "Don't Start Now", "The Man", "Say So", "Worth It", "Work", "Shake It Off", "Want To Want Me", "Lean On", "Super Bass", "Happy", "Someone Like You", "Glad You Came", "Call Me Maybe", "Stronger", "Payphone", "Roar", "I Love It", "Problem"]
     
-    let tempoGeral = [3, 3, 3, 3, 4, 3, 4, 3, 4, 3, 3, 3, 4, 5, 3, 3, 4, 4, 4, 3, 3]
+    let tempoGeral = [2, 3, 3, 3, 3, 4, 3, 4, 3, 4, 3, 3, 3, 4, 5, 3, 3, 4, 4, 4, 3, 3]
     
-    //let capaGeral = [""]
+    let capaGeral: [UIImage] = [UIImage(named: "climaQuente")!, UIImage(named: "physical")!, UIImage(named: "stupidLove")!, UIImage(named: "salt")!, UIImage(named: "theMan")!, UIImage(named: "saySo")!, UIImage(named: "worthIt")!, UIImage(named: "work")!, UIImage(named: "worthIt")!, UIImage(named: "shakeItOff")!, UIImage(named: "wantToWantMe")!, UIImage(named: "leanOn")!, UIImage(named: "superBass")!, UIImage(named: "happy")!, UIImage(named: "someoneLikeYou")!, UIImage(named: "gladYouCame")!, UIImage(named: "callMeMaybe")!, UIImage(named: "stronger")!, UIImage(named: "payphone")!, UIImage(named: "roar")!, UIImage(named: "iLoveIt")!, UIImage(named: "problem")!]
+
     
-    let artistaGeral = ["Dua Lipa", "Lady Gaga", "Ava Max", "Dua Lipa", "Taylor Swift", "Doja Cat", "Fifth Harmony", "Rihanna", "Taylor Swift", "Jason Derulo", "Major Lazer", "Nicki Minaj", "Pharrell Williams", "Adele", "The Wanted", "Carly Rae Jepsen", "Kelly Clarkson", "Marron 5", "Katy Perry", "Icona PoP", "Ariana Grande"]
+    let artistaGeral = ["Pabllo Vittar", "Dua Lipa", "Lady Gaga", "Ava Max", "Dua Lipa", "Taylor Swift", "Doja Cat", "Fifth Harmony", "Rihanna", "Taylor Swift", "Jason Derulo", "Major Lazer", "Nicki Minaj", "Pharrell Williams", "Adele", "The Wanted", "Carly Rae Jepsen", "Kelly Clarkson", "Marron 5", "Katy Perry", "Icona PoP", "Ariana Grande"]
     
     func preencherMusicas() {
         for n in 0...nomeGeral.count-1 {
-            let musica: Musica = Musica(tempoMin: tempoGeral[n], nomeMus: nomeGeral[n], artistaMus: artistaGeral[n])
+            let musica: Musica = Musica(tempoMin: tempoGeral[n], nomeMus: nomeGeral[n], artistaMus: artistaGeral[n], capaMus: capaGeral[n])
             listaMusica.append(musica)
         }
     }

@@ -32,7 +32,7 @@ public final class Knapsack {
                 }
                 else{
                     let remainingCapacity = totalTime - knapsackItems[itemIndex-1].tempo
-                    tableOfValues[itemIndex][totalTime] = max(tableOfValues[itemIndex-1][remainingCapacity], tableOfValues[itemIndex-1][totalTime]) //knapsackItems[itemIndex-1].priority +
+                    tableOfValues[itemIndex][totalTime] = max((capacityOfBag - knapsackItems[itemIndex-1].tempo) + tableOfValues[itemIndex-1][remainingCapacity], tableOfValues[itemIndex-1][totalTime])
                 }
             
             }
@@ -46,10 +46,8 @@ public final class Knapsack {
         while(i > 0 && res > 0){
 
             if(res != tableOfValues[i-1][w]){
-                //print(knapsackItems.atividades[i-1].name)
-                
                 acts.append(knapsackItems[i-1])
-                res = res - 0
+                res = res - (capacityOfBag - knapsackItems[i-1].tempo)
                 w = w - knapsackItems[i-1].tempo
             }
             
@@ -57,9 +55,7 @@ public final class Knapsack {
             
         }
         
-        return acts
-        // return tableOfValues[knapsackItems.atividades.count][capacityOfBag]
-        
+        return acts        
     }
     
 }

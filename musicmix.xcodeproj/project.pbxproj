@@ -18,6 +18,7 @@
 		08A03B78240D8065008602BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08A03B76240D8065008602BE /* Main.storyboard */; };
 		08A03B7A240D8068008602BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08A03B79240D8068008602BE /* Assets.xcassets */; };
 		08A03B7D240D8068008602BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08A03B7B240D8068008602BE /* LaunchScreen.storyboard */; };
+		08D0D9F4241BED9F00576D77 /* MusicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0D9F3241BED9F00576D77 /* MusicCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		08A03B79240D8068008602BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08A03B7C240D8068008602BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08A03B7E240D8068008602BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08D0D9F3241BED9F00576D77 /* MusicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				08A03B74240D8065008602BE /* ViewController.swift */,
 				08A03B76240D8065008602BE /* Main.storyboard */,
 				0883C56E24182DE200201408 /* Musica.swift */,
+				08D0D9F3241BED9F00576D77 /* MusicCollectionViewCell.swift */,
 				083CE978241AACBB007421B9 /* musicmix.h */,
 				08A03B79240D8068008602BE /* Assets.xcassets */,
 				083CE976241AAACB007421B9 /* SpotifyMetadata.framework */,
@@ -160,6 +163,7 @@
 			files = (
 				083CE97A241AE23A007421B9 /* Knapsack.swift in Sources */,
 				08A03B75240D8065008602BE /* ViewController.swift in Sources */,
+				08D0D9F4241BED9F00576D77 /* MusicCollectionViewCell.swift in Sources */,
 				0883C56F24182DE200201408 /* Musica.swift in Sources */,
 				08A03B71240D8065008602BE /* AppDelegate.swift in Sources */,
 				08A03B73240D8065008602BE /* SceneDelegate.swift in Sources */,
