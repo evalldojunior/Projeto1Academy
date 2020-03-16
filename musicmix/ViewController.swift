@@ -12,10 +12,10 @@ import AVFoundation
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
-//    var auth = SPTAuth.defaultInstance()
-//    var session:SPTSession!
-//    var player : SPTAudioStreamingController?
-//    var loginUrl: URL?
+    //    var auth = SPTAuth.defaultInstance()
+    //    var session:SPTSession!
+    //    var player : SPTAudioStreamingController?
+    //    var loginUrl: URL?
     
     @IBOutlet var generoTextField: UITextField!
     @IBOutlet var timeTextField: UITextField!
@@ -41,7 +41,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //overrideUserInterfaceStyle = .dark
         timeTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: timeTextField.frame.height))
         timeTextField.leftViewMode = .always
         generoTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: generoTextField.frame.height))
@@ -71,18 +71,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         collectionView.delegate = self
         collectionView.dataSource = self
         
-//        setup()
-//        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.updateAfterFirstLogin), name: NSNotification.Name(rawValue: "ligginSuccessfull"), object: nil)
+        //        setup()
+        //        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.updateAfterFirstLogin), name: NSNotification.Name(rawValue: "ligginSuccessfull"), object: nil)
     }
     
     
-//    @IBAction func spotifyLogin(_ sender: Any) {
-//        if UIApplication.shared.canOpenURL(loginUrl!){ //talvez de erro
-//            if auth!.canHandle(auth?.redirectURL) {
-//                // do something
-//            }
-//        }
-//    }
+    //    @IBAction func spotifyLogin(_ sender: Any) {
+    //        if UIApplication.shared.canOpenURL(loginUrl!){ //talvez de erro
+    //            if auth!.canHandle(auth?.redirectURL) {
+    //                // do something
+    //            }
+    //        }
+    //    }
     
     @IBAction func mostrarResultado() {
         view.endEditing(true)
@@ -102,7 +102,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             else {
                 UIView.animate(withDuration: 1.5) {
                     self.posicaoInicialElementos()
-                    }
+                }
                 resultado = false
             }
         }
@@ -115,79 +115,41 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
-//    func setup() {
-//        let redirectURL = "musicmix://returnAfterLogin"
-//        let clientID = "14a528f61c4a49ad93abab2808829549"
-//        auth!.redirectURL = URL(string: redirectURL)
-//        auth!.clientID = "14a528f61c4a49ad93abab2808829549"
-//        auth?.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope]
-//        loginUrl = auth?.spotifyAppAuthenticationURL()
-//    }
-//
-//    func initializePlayer(authSession:SPTSession) {
-//        if self.player == nil {
-//            self.player = SPTAudioStreamingController.sharedInstance()
-//            self.player!.playbackDelegate = self
-//            self.player!.delegate = self
-//            try! player?.start(withClientId: auth?.clientID)
-//            self.player!.login(withAccessToken: authSession.accessToken)
-//        }
-//    }
+    //    func setup() {
+    //        let redirectURL = "musicmix://returnAfterLogin"
+    //        let clientID = "14a528f61c4a49ad93abab2808829549"
+    //        auth!.redirectURL = URL(string: redirectURL)
+    //        auth!.clientID = "14a528f61c4a49ad93abab2808829549"
+    //        auth?.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope]
+    //        loginUrl = auth?.spotifyAppAuthenticationURL()
+    //    }
+    //
+    //    func initializePlayer(authSession:SPTSession) {
+    //        if self.player == nil {
+    //            self.player = SPTAudioStreamingController.sharedInstance()
+    //            self.player!.playbackDelegate = self
+    //            self.player!.delegate = self
+    //            try! player?.start(withClientId: auth?.clientID)
+    //            self.player!.login(withAccessToken: authSession.accessToken)
+    //        }
+    //    }
     
-//    @objc func updateAfterFirstLogin() {
-//        let userDefaults = UserDefaults.standard
-//        if let sessionObj:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
-//            let sessionDataObj = sessionObj as! Data
-//            let firstTimeSession = try? NSKeyedUnarchiver.unarchivedObject(ofClass: SPTSession.self, from: sessionDataObj)! //talvez de erro
-//            self.session = firstTimeSession
-//            initializePlayer(authSession: session)
-//        }
-//    }
-//
-//    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
-//        print("ae porra voce logou")
-//    }
+    //    @objc func updateAfterFirstLogin() {
+    //        let userDefaults = UserDefaults.standard
+    //        if let sessionObj:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
+    //            let sessionDataObj = sessionObj as! Data
+    //            let firstTimeSession = try? NSKeyedUnarchiver.unarchivedObject(ofClass: SPTSession.self, from: sessionDataObj)! //talvez de erro
+    //            self.session = firstTimeSession
+    //            initializePlayer(authSession: session)
+    //        }
+    //    }
+    //
+    //    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
+    //        print("ae porra voce logou")
+    //    }
     
-    func criarListaMusica() {
-        //- Ler o campo de tempo
-        let time = timeTextField.text!
-        let timeInt = Int(time)!
-        
-        //- Ler o campo de gênero musical
-        //let genero = generoTextField.text!
-        
-        //- Aplicar o algoritmo de knapsack para descobrir a lista de musicas do gênero dado que completem o tempo dado
-        let knapsack: Knapsack = Knapsack(capacity: timeInt, activities: listaMusica)
-        listaFinal = knapsack.knapsack()
-        
-        for n in 0...listaFinal.count-1{
-            print(listaFinal[n].nome)
-        }
-        
-        collectionView.reloadData()
-        print("por favor pega nao aguento mais")
+    @IBAction func shuffleButtonAction() {
     }
-    
-    
-    func mostrarListaMusica() {
-        //- Aparecer a lista de musicas resultante do algoritmo de knapsack apos os campos de tempo e genero musical
-        collectionView.alpha = 0
-        self.collectionView.isHidden = false
-        UIView.animate(withDuration: 0.1, delay: 1.5, options: .curveEaseInOut, animations: {
-            self.collectionView.alpha = 1
-        }, completion: { _ in
-        })
-    }
-    
-    func esconderLista() {
-        //- Esconder a lista de musicas
-        UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseInOut, animations: {
-            self.collectionView.alpha = 0
-        }, completion: { _ in
-            self.collectionView.isHidden = true
-        })
-    }
-    
     
     func posicaoInicialElementos() {
         //- Voltar os campos de tempo e gênero musical a sua posição inicial
@@ -236,28 +198,41 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         mostrarListaMusica()
     }
     
-    func modoNoturno() {
-        //- Trocar as cores do fundo e dos campos de tempo e gênero musical
-        if dark == false {
-            view.backgroundColor = #colorLiteral(red: 0.1316064894, green: 0.1274462938, blue: 0.1274887919, alpha: 1)
-            timeTextField.layer.borderColor = UIColor.white.cgColor
-            timeTextField.textColor = UIColor.white
-            timeTextField.attributedPlaceholder = NSAttributedString(string: "Tempo (minutos)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-            generoTextField.layer.borderColor = UIColor.white.cgColor
-            generoTextField.textColor = UIColor.white
-            generoTextField.attributedPlaceholder = NSAttributedString(string: "Gênero musical", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-            dark = true
-        } else {
-            view.backgroundColor = UIColor.white
-            timeTextField.layer.borderColor = UIColor.black.cgColor
-            timeTextField.textColor = UIColor.black
-            timeTextField.attributedPlaceholder = NSAttributedString(string: "Tempo (minutos)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-            generoTextField.layer.borderColor = UIColor.black.cgColor
-            generoTextField.textColor = UIColor.black
-            generoTextField.attributedPlaceholder = NSAttributedString(string: "Gênero musical", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-            dark = false
-        }
+    func mostrarListaMusica() {
+        //- Aparecer a lista de musicas resultante do algoritmo de knapsack apos os campos de tempo e genero musical
+        collectionView.alpha = 0
+        self.collectionView.isHidden = false
+        UIView.animate(withDuration: 0.3, delay: 1.5, options: .curveEaseInOut, animations: {
+            self.collectionView.alpha = 1
+        }, completion: { _ in
+        })
+    }
+    
+    func esconderLista() {
+        //- Esconder a lista de musicas
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.collectionView.alpha = 0
+        }, completion: { _ in
+            self.collectionView.isHidden = true
+        })
+    }
+    
+    func criarListaMusica() {
+        //- Ler o campo de tempo
+        let time = timeTextField.text!
+        let timeInt = tempoInteiro(inteiro: time)
         
+        //- Ler o campo de gênero musical
+        //let genero = generoTextField.text!
+        
+        //- Aplicar o algoritmo de knapsack para descobrir a lista de musicas do gênero dado que completem o tempo dado
+        let knapsack: Knapsack = Knapsack(capacity: timeInt, activities: listaMusica)
+        listaFinal = knapsack.knapsack()
+        
+//        for n in 0...listaFinal.count-1{
+//            print(listaFinal[n].nome)
+//        }
+        collectionView.reloadData()
     }
     
     func esconderElementos() {
@@ -286,23 +261,60 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //- Mover o botão Party! um pouco para baixo
         //- Trocar o texto do botão “Party!” para “Refazer”
         partyButton.setTitle("Refazer", for: .normal)
-        partyButton.frame = CGRect(x: partyButton.frame.origin.x, y: 751, width: partyButton.frame.size.width, height: partyButton.frame.size.height)
+        partyButton.frame = CGRect(x: partyButton.frame.origin.x, y: 785, width: partyButton.frame.size.width, height: partyButton.frame.size.height)
         
     }
     
     func moverCamposTempoGenero() {
         //- Mover os campos de tempo e gênero musical um pouco para cima
-        timeTextField.frame = CGRect(x: timeTextField.frame.origin.x, y: 300, width: timeTextField.frame.size.width, height: timeTextField.frame.size.height)
-        generoTextField.frame = CGRect(x: generoTextField.frame.origin.x, y: 300, width: generoTextField.frame.size.width, height: generoTextField.frame.size.height)
-        logoImage.frame = CGRect(x: logoImage.frame.origin.x, y: 113, width: logoImage.frame.size.width, height: logoImage.frame.size.height)
+        timeTextField.frame = CGRect(x: timeTextField.frame.origin.x, y: 280, width: timeTextField.frame.size.width, height: timeTextField.frame.size.height)
+        generoTextField.frame = CGRect(x: generoTextField.frame.origin.x, y: 280, width: generoTextField.frame.size.width, height: generoTextField.frame.size.height)
+        logoImage.frame = CGRect(x: logoImage.frame.origin.x, y: 110, width: logoImage.frame.size.width, height: logoImage.frame.size.height)
         
         // tornar nao editavel
         timeTextField.isEnabled = false
         generoTextField.isEnabled = false
-        
-        //timeTextField.text = timeTextField.text! + " minutos"
     }
     
+    func modoNoturno() {
+        //- Trocar as cores do fundo e dos campos de tempo e gênero musical
+        if dark == false {
+            view.backgroundColor = #colorLiteral(red: 0.1316064894, green: 0.1274462938, blue: 0.1274887919, alpha: 1)
+            timeTextField.layer.borderColor = UIColor.white.cgColor
+            timeTextField.textColor = UIColor.white
+            timeTextField.attributedPlaceholder = NSAttributedString(string: "Tempo (minutos)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+            generoTextField.layer.borderColor = UIColor.white.cgColor
+            generoTextField.textColor = UIColor.white
+            generoTextField.attributedPlaceholder = NSAttributedString(string: "Gênero musical", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+            
+            
+            self.collectionView.backgroundColor = #colorLiteral(red: 0.1215545461, green: 0.1215779558, blue: 0.1215471998, alpha: 1)
+            
+            dark = true
+        } else {
+            view.backgroundColor = UIColor.white
+            timeTextField.layer.borderColor = UIColor.black.cgColor
+            timeTextField.textColor = UIColor.black
+            timeTextField.attributedPlaceholder = NSAttributedString(string: "Tempo (minutos)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+            generoTextField.layer.borderColor = UIColor.black.cgColor
+            generoTextField.textColor = UIColor.black
+            generoTextField.attributedPlaceholder = NSAttributedString(string: "Gênero musical", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+            collectionView.backgroundColor = UIColor.white
+            
+            dark = false
+        }
+        
+    }
+    
+    func tempoInteiro(inteiro: String) -> Int {
+        //let temp = inteiro
+        let tempIndex = inteiro.firstIndex(of: " ") ?? inteiro.endIndex
+        let subString = inteiro[..<tempIndex]
+        return Int(subString)!
+    }
+    
+    
+    //funcoes dos componentes, pickers, etc
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         if pickerView == pickerView1 {
             return 1
@@ -329,7 +341,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == pickerView1 {
-            timeTextField.text = time[row]// + " minutos"
+            timeTextField.text = time[row] + " minutos"
         } else {
             generoTextField.text = genero[row]
         }
@@ -363,7 +375,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         return cell
     }
-
+    
+    
     // colocando exemplos predefinidos para mostrar pelo menos um resultado
     // talvez colocar as proximas linhas em um outro arquivo
     var listaMusica: [Musica] = []
@@ -372,8 +385,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     let tempoGeral = [2, 3, 3, 3, 3, 4, 3, 4, 3, 4, 3, 3, 3, 4, 5, 3, 3, 4, 4, 4, 3, 3]
     
-    let capaGeral: [UIImage] = [UIImage(named: "climaQuente")!, UIImage(named: "physical")!, UIImage(named: "stupidLove")!, UIImage(named: "salt")!, UIImage(named: "theMan")!, UIImage(named: "saySo")!, UIImage(named: "worthIt")!, UIImage(named: "work")!, UIImage(named: "worthIt")!, UIImage(named: "shakeItOff")!, UIImage(named: "wantToWantMe")!, UIImage(named: "leanOn")!, UIImage(named: "superBass")!, UIImage(named: "happy")!, UIImage(named: "someoneLikeYou")!, UIImage(named: "gladYouCame")!, UIImage(named: "callMeMaybe")!, UIImage(named: "stronger")!, UIImage(named: "payphone")!, UIImage(named: "roar")!, UIImage(named: "iLoveIt")!, UIImage(named: "problem")!]
-
+    let capaGeral: [UIImage] = [UIImage(named: "climaQuente")!, UIImage(named: "physical")!, UIImage(named: "stupidLove")!, UIImage(named: "salt")!, UIImage(named: "dontStartNow")!, UIImage(named: "theMan")!, UIImage(named: "saySo")!, UIImage(named: "worthIt")!, UIImage(named: "work")!, UIImage(named: "shakeItOff")!, UIImage(named: "wantToWantMe")!, UIImage(named: "leanOn")!, UIImage(named: "superBass")!, UIImage(named: "happy")!, UIImage(named: "someoneLikeYou")!, UIImage(named: "gladYouCame")!, UIImage(named: "callMeMaybe")!, UIImage(named: "stronger")!, UIImage(named: "payphone")!, UIImage(named: "roar")!, UIImage(named: "iLoveIt")!, UIImage(named: "problem")!]
+    
     
     let artistaGeral = ["Pabllo Vittar", "Dua Lipa", "Lady Gaga", "Ava Max", "Dua Lipa", "Taylor Swift", "Doja Cat", "Fifth Harmony", "Rihanna", "Taylor Swift", "Jason Derulo", "Major Lazer", "Nicki Minaj", "Pharrell Williams", "Adele", "The Wanted", "Carly Rae Jepsen", "Kelly Clarkson", "Marron 5", "Katy Perry", "Icona PoP", "Ariana Grande"]
     
@@ -383,8 +396,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             listaMusica.append(musica)
         }
     }
-    
-    
     
 }
 
