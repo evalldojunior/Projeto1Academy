@@ -149,6 +149,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     //    }
     
     @IBAction func shuffleButtonAction() {
+        listaMusica.shuffle()
+        UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.collectionView.alpha = 0
+        }, completion: { _ in
+            self.criarListaMusica()
+            self.mostrarListaMusica()
+        })
+        
     }
     
     func posicaoInicialElementos() {
@@ -195,14 +203,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         mostrarElementos()
         moverETrocarNomeBotao()
         moverCamposTempoGenero()
-        mostrarListaMusica()
+        // mostrarListaMusica()
     }
     
     func mostrarListaMusica() {
         //- Aparecer a lista de musicas resultante do algoritmo de knapsack apos os campos de tempo e genero musical
         collectionView.alpha = 0
         self.collectionView.isHidden = false
-        UIView.animate(withDuration: 0.3, delay: 1.5, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseIn, animations: {
             self.collectionView.alpha = 1
         }, completion: { _ in
         })
@@ -210,7 +218,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func esconderLista() {
         //- Esconder a lista de musicas
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseInOut, animations: {
             self.collectionView.alpha = 0
         }, completion: { _ in
             self.collectionView.isHidden = true
@@ -229,9 +237,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let knapsack: Knapsack = Knapsack(capacity: timeInt, activities: listaMusica)
         listaFinal = knapsack.knapsack()
         
-//        for n in 0...listaFinal.count-1{
-//            print(listaFinal[n].nome)
-//        }
+        //        for n in 0...listaFinal.count-1{
+        //            print(listaFinal[n].nome)
+        //        }
         collectionView.reloadData()
     }
     
@@ -250,10 +258,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         shuffleButton.alpha = 0
         self.lixoButton.isHidden = false
         self.shuffleButton.isHidden = false
-        UIView.animate(withDuration: 0.1, delay: 1.0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.1, delay: 0.2, options: .curveEaseIn, animations: {
             self.lixoButton.alpha = 1
             self.shuffleButton.alpha = 1
         }, completion: { _ in
+            self.mostrarListaMusica()
         })
     }
     
@@ -388,7 +397,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     let capaGeral: [UIImage] = [UIImage(named: "climaQuente")!, UIImage(named: "physical")!, UIImage(named: "stupidLove")!, UIImage(named: "salt")!, UIImage(named: "dontStartNow")!, UIImage(named: "theMan")!, UIImage(named: "saySo")!, UIImage(named: "worthIt")!, UIImage(named: "work")!, UIImage(named: "shakeItOff")!, UIImage(named: "wantToWantMe")!, UIImage(named: "leanOn")!, UIImage(named: "superBass")!, UIImage(named: "happy")!, UIImage(named: "someoneLikeYou")!, UIImage(named: "gladYouCame")!, UIImage(named: "callMeMaybe")!, UIImage(named: "stronger")!, UIImage(named: "payphone")!, UIImage(named: "roar")!, UIImage(named: "iLoveIt")!, UIImage(named: "problem")!]
     
     
-    let artistaGeral = ["Pabllo Vittar", "Dua Lipa", "Lady Gaga", "Ava Max", "Dua Lipa", "Taylor Swift", "Doja Cat", "Fifth Harmony", "Rihanna", "Taylor Swift", "Jason Derulo", "Major Lazer", "Nicki Minaj", "Pharrell Williams", "Adele", "The Wanted", "Carly Rae Jepsen", "Kelly Clarkson", "Marron 5", "Katy Perry", "Icona PoP", "Ariana Grande"]
+    let artistaGeral = ["Pabllo Vittar", "Dua Lipa", "Lady Gaga", "Ava Max", "Dua Lipa", "Taylor Swift", "Doja Cat", "Fifth Harmony", "Rihanna", "Taylor Swift", "Jason Derulo", "Major Lazer", "Nicki Minaj", "Pharrell Williams", "Adele", "The Wanted", "Carly Rae Jepsen", "Kelly Clarkson", "Marron 5", "Katy Perry", "Icona Pop", "Ariana Grande"]
     
     func preencherMusicas() {
         for n in 0...nomeGeral.count-1 {
