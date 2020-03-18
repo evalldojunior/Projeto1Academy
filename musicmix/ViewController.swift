@@ -382,6 +382,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         cell.musicaArtista.text = listaFinal[indexPath.item].artista
         cell.musicaImageView.image = listaFinal[indexPath.item].capa
         
+        if dark == true {
+            cell.musicaNome.textColor = UIColor.white
+            cell.musicaTempo.textColor = UIColor.white
+            cell.musicaArtista.textColor = UIColor.white
+        } else {
+            cell.musicaNome.textColor = UIColor.black
+            cell.musicaTempo.textColor = UIColor.black
+            cell.musicaArtista.textColor = UIColor.black
+        }
+        
         return cell
     }
     
