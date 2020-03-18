@@ -32,7 +32,7 @@ public final class Knapsack {
                 }
                 else{
                     let remainingCapacity = totalTime - knapsackItems[itemIndex-1].tempo
-                    tableOfValues[itemIndex][totalTime] = max((capacityOfBag - knapsackItems[itemIndex-1].tempo) + tableOfValues[itemIndex-1][remainingCapacity], tableOfValues[itemIndex-1][totalTime])
+                    tableOfValues[itemIndex][totalTime] = max(1 + tableOfValues[itemIndex-1][remainingCapacity], tableOfValues[itemIndex-1][totalTime]) //colocando a prioridade de todos os itens como a mesma
                 }
             
             }
@@ -47,7 +47,7 @@ public final class Knapsack {
 
             if(res != tableOfValues[i-1][w]){
                 acts.append(knapsackItems[i-1])
-                res = res - (capacityOfBag - knapsackItems[i-1].tempo)
+                res = res - 1 // mudando a prioridade de todos os itens para ser a mesma. antes no lugar do 1: (capacityOfBag - knapsackItems[i-1].tempo)
                 w = w - knapsackItems[i-1].tempo
             }
             

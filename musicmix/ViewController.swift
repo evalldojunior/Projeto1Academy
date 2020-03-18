@@ -400,14 +400,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     // talvez colocar as proximas linhas em um outro arquivo
     var listaMusica: [Musica] = []
     
-    let nomeGeral = ["Clima Quente", "Physical", "Stupid Love", "Salt", "Don't Start Now", "The Man", "Say So", "Worth It", "Work", "Shake It Off", "Want To Want Me", "Lean On", "Super Bass", "Happy", "Someone Like You", "Glad You Came", "Call Me Maybe", "Stronger", "Payphone", "Roar", "I Love It", "Problem"]
+    let nomeGeral = ["Parabéns", "Clima Quente", "Physical", "Stupid Love", "Salt", "Don't Start Now", "The Man", "Say So", "Worth It", "Work", "Shake It Off", "Want To Want Me", "Lean On", "Super Bass", "Happy", "Someone Like You", "Glad You Came", "Call Me Maybe", "Stronger", "Payphone", "Roar", "I Love It", "Problem"]
     
-    let tempoGeral = [2, 3, 3, 3, 3, 4, 3, 4, 3, 4, 3, 3, 3, 4, 5, 3, 3, 4, 4, 4, 3, 3]
+    let tempoGeral = [2, 2, 3, 3, 3, 3, 4, 3, 4, 3, 4, 3, 3, 3, 4, 5, 3, 3, 4, 4, 4, 3, 3]
     
-    let capaGeral: [UIImage] = [UIImage(named: "climaQuente")!, UIImage(named: "physical")!, UIImage(named: "stupidLove")!, UIImage(named: "salt")!, UIImage(named: "dontStartNow")!, UIImage(named: "theMan")!, UIImage(named: "saySo")!, UIImage(named: "worthIt")!, UIImage(named: "work")!, UIImage(named: "shakeItOff")!, UIImage(named: "wantToWantMe")!, UIImage(named: "leanOn")!, UIImage(named: "superBass")!, UIImage(named: "happy")!, UIImage(named: "someoneLikeYou")!, UIImage(named: "gladYouCame")!, UIImage(named: "callMeMaybe")!, UIImage(named: "stronger")!, UIImage(named: "payphone")!, UIImage(named: "roar")!, UIImage(named: "iLoveIt")!, UIImage(named: "problem")!]
+    let capaGeral: [UIImage] = [UIImage(named: "parabens")!, UIImage(named: "climaQuente")!, UIImage(named: "physical")!, UIImage(named: "stupidLove")!, UIImage(named: "salt")!, UIImage(named: "dontStartNow")!, UIImage(named: "theMan")!, UIImage(named: "saySo")!, UIImage(named: "worthIt")!, UIImage(named: "work")!, UIImage(named: "shakeItOff")!, UIImage(named: "wantToWantMe")!, UIImage(named: "leanOn")!, UIImage(named: "superBass")!, UIImage(named: "happy")!, UIImage(named: "someoneLikeYou")!, UIImage(named: "gladYouCame")!, UIImage(named: "callMeMaybe")!, UIImage(named: "stronger")!, UIImage(named: "payphone")!, UIImage(named: "roar")!, UIImage(named: "iLoveIt")!, UIImage(named: "problem")!]
     
     
-    let artistaGeral = ["Pabllo Vittar", "Dua Lipa", "Lady Gaga", "Ava Max", "Dua Lipa", "Taylor Swift", "Doja Cat", "Fifth Harmony", "Rihanna", "Taylor Swift", "Jason Derulo", "Major Lazer", "Nicki Minaj", "Pharrell Williams", "Adele", "The Wanted", "Carly Rae Jepsen", "Kelly Clarkson", "Marron 5", "Katy Perry", "Icona Pop", "Ariana Grande"]
+    let artistaGeral = ["Pabllo Vittar", "Pabllo Vittar", "Dua Lipa", "Lady Gaga", "Ava Max", "Dua Lipa", "Taylor Swift", "Doja Cat", "Fifth Harmony", "Rihanna", "Taylor Swift", "Jason Derulo", "Major Lazer", "Nicki Minaj", "Pharrell Williams", "Adele", "The Wanted", "Carly Rae Jepsen", "Kelly Clarkson", "Marron 5", "Katy Perry", "Icona Pop", "Ariana Grande"]
     
     func preencherMusicas() {
         for n in 0...nomeGeral.count-1 {
